@@ -21,4 +21,7 @@ defmodule RegionWeb.Router do
 
   forward "/api", Absinthe.Plug,
     schema: RegionWeb.Schema
+
+  forward "/graphiql", Absinthe.Plug.GraphiQL,
+    schema: RegionWeb.Schema
 end
