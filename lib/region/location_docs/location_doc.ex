@@ -14,9 +14,9 @@ defmodule Region.LocationDocs.LocationDoc do
   end
 
   @doc false
-  def changeset(doc, attrs) do
-    doc
-    |> cast(attrs, [:latitude, :longitude])
+  def changeset(location_doc, attrs) do
+    location_doc
+    |> cast(attrs, [:latitude, :longitude, :doc_id])
     |> validate_required([:latitude, :longitude, :doc_id])
   end
 end

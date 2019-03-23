@@ -20,4 +20,22 @@ defmodule Region.LocationDocs do
   def list_location_docs do
     Repo.all(LocationDoc)
   end
+
+  @doc """
+  Creates a location_doc.
+
+  ## Examples
+
+      iex> create_location_doc(%{field: value})
+      {:ok, %Doc{}}
+
+      iex> create_location_doc(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_location_doc(attrs \\ %{}) do
+    %LocationDoc{}
+    |> LocationDoc.changeset(attrs)
+    |> Repo.insert()
+  end
 end

@@ -20,4 +20,22 @@ defmodule Region.Docs do
   def list_docs do
     Repo.all(Doc)
   end
+
+  @doc """
+  Creates a doc.
+
+  ## Examples
+
+      iex> create_doc(%{field: value})
+      {:ok, %Doc{}}
+
+      iex> create_doc(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_doc(attrs \\ %{}) do
+    %Doc{}
+    |> Doc.changeset(attrs)
+    |> Repo.insert()
+  end
 end
