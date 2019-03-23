@@ -19,6 +19,6 @@ import "react-phoenix"
 import React from "react";
 import ReactDOM from "react-dom";
 
-import AddTransaction from './components/AddTransaction';
+import DocsIndex from './components/DocsIndex';
 
-ReactDOM.render(<AddTransaction />, document.getElementById("react-app"));
+ReactDOM.render(<DocsIndex/>, document.getElementById("react-app"));

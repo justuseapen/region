@@ -19,8 +19,6 @@ defmodule RegionWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", RegionWeb do
-  #   pipe_through :api
-  # end
+  forward "/api", Absinthe.Plug,
+    schema: RegionWeb.Schema
 end
