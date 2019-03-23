@@ -4,10 +4,9 @@ defmodule Region.Docs.Location do
 
 
   schema "locations" do
+    belongs_to :doc, Region.Docs.Doc
     field :latitude, :decimal
     field :longitude, :decimal
-    field :doc_id, :integer
-
     timestamps()
   end
 
