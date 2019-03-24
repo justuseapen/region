@@ -15,6 +15,7 @@ defmodule RegionWeb.Schema do
     field :location_docs, list_of(:location_doc) do
       arg :latitude, :float
       arg :longitude, :float
+      arg :sort_direction, :string
       resolve &Resolvers.LocationDocs.list_location_docs/3
     end
 
