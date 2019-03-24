@@ -10,8 +10,6 @@ defmodule RegionWeb.Resolvers.LocationDocs do
   end
 
   def create_doc(_parent, args, _resoltion) do
-    IO.inspect(args)
-    IO.inspect(args[:body])
     {:ok, doc} = Docs.create_doc(%{title: args[:title], body: args[:body]})
     LocationDocs.create_location_doc(%{doc_id: doc.id, latitude: args[:latitude], longitude: args[:longitude]})
   end
