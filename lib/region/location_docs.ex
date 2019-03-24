@@ -17,6 +17,10 @@ defmodule Region.LocationDocs do
       [%LocationDoc{}, ...]
 
   """
+
+  def list_location_docs(latitude, longitude) do
+    Repo.all(LocationDoc)
+  end
   def list_location_docs do
     Repo.all(LocationDoc)
   end
