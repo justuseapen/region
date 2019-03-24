@@ -17,6 +17,34 @@ defmodule Region.LocationDocs do
       [%LocationDoc{}, ...]
 
   """
+
+  def list_location_docs(latitude, longitude) do
+    distance = 1.5 # in miles
+    sql = """
+          WITH distances AS (
+            SELECT
+            *,
+            (
+              3959 *
+              acos(cos(radians($1)) *
+              cos(radians(latitude)) *
+              cos(radians(longitude) -
+              radians($2)) +
+              sin(radians($1)) *
+              sin(radians(latitude)))
+            ) AS distance
+            FROM location_docs
+          )
+          SELECT id, latitude, longitude, doc_id, inserted_at
+          FROM distances
+          WHERE distance < $3;
+          """
+    Repo.execute_and_load(
+      sql,
+      [latitude, longitude, distance],
+      LocationDoc
+    )
+  end
   def list_location_docs do
     Repo.all(LocationDoc)
   end
