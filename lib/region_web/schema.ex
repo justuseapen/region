@@ -17,4 +17,18 @@ defmodule RegionWeb.Schema do
     end
 
   end
+
+  mutation do
+
+    @desc "Create a doc"
+    field :create_doc, type: :location_doc do
+      arg :title, non_null(:string)
+      arg :body, non_null(:string)
+      arg :latitude, non_null(:float)
+      arg :longitude, non_null(:float)
+
+      resolve &Resolvers.LocationDocs.create_doc/3
+    end
+
+  end
 end
